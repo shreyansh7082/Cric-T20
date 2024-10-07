@@ -1,0 +1,211 @@
+Cric_T20
+
+Requirement 
+
+We don't know the strength and weakness of the opponents but give me the best 11 from this planet
+
+1 - the team should be able to score at least 180 runs on an average 
+2 - they should be able to defend 150 runs on an average
+
+OPENERS - 
+
+parameters    ---------            description           --------       criteria 
+
+
+1- batting average       avg runs scored in an inning                >30
+
+2- Strike rate           num of runs scored per 100 balls            >140
+
+3- innings batted        total innings batted                        >3
+
+4- boundary %             % of runs scored in boundaries             >50
+
+5- Batting position       order in which batter played               <4
+
+
+anchors / middle orders - 
+
+parameters    ---------                           description           ------------------                                                     criteria 
+
+
+1- batting average                        avg runs scored in an inning                                                                          >40
+
+2- Strike rate                            num of runs scored per 100 balls                                                                      >125
+
+3- innings batted                         total innings batted                                                                                  >3
+
+4- avg balls faced                        avg balls faced by the batter in an innings                                                           >20
+
+5- Batting position                       order in which batter played                                                                          >2
+
+
+
+FinisherS - 
+
+parameters    ---------                                  description           --------                         criteria 
+
+
+1- batting average                                  avg runs scored in an inning                                   >25
+
+2- Strike rate                                      num of runs scored per 100 balls                               >130
+
+3- innings batted                                     total innings batted                                         >3
+
+4- avg balls faced                          avg balls faced by the batter in an innings                            >12
+
+5- Batting position                                     order in which batter played                               >4
+ 
+6-  innings bowled                                 total innings bowled by the bowler                              > 1      
+
+
+
+all rounder / lower order 
+
+
+PARAMETERS                                                             DESCRIPTION                                                             CRITERIA
+
+Batting Average                                                 Average runs scored in an innings                                                 > 15
+
+
+
+Strike Rate                                                     No of runs scored per 100 balls                                                   > 140
+
+
+
+Innings Batted                                                   Total Innings batted                                                              >2
+
+
+
+Batting Position                                                 Order in which the batter played                                                  >4
+
+
+
+Innings Bowled                                                    Total Innings bowled                                                              >2
+
+
+Bowling Economy                                                  Average runs allowed per over                                                      <7
+
+
+bowling strike rate                                         avg no of balls required to take a wicket                                              < 20
+
+
+with the help of bright data and espn cric info scrapped all the data 
+
+Project Overview
+This project involves analyzing and visualizing T20 cricket data using Power BI, with the help of Pandas in Python for pre-processing and managing data.
+
+Role of Pandas in the Project
+Pandas is a powerful Python library used for data analysis and manipulation. In this project, it played a crucial role in preparing the data before it was imported into Power BI. Here’s a breakdown of the key steps where Pandas was applied:
+
+Data Cleaning:
+
+Removed missing or null values from the dataset to ensure data consistency.
+Handled outliers or erroneous data points using techniques such as filling missing values with averages or using interpolation.
+Example:
+
+python
+Copy code
+df.dropna(inplace=True)  # Remove missing values
+df['column_name'].fillna(df['column_name'].mean(), inplace=True)  # Fill missing values with mean
+
+
+Data Transformation:
+
+Converted the raw data into a structured format suitable for analysis.
+Applied transformations such as filtering, sorting, and grouping data to create meaningful insights.
+Example:
+
+python
+Copy code
+# Grouping by teams to calculate aggregate statistics
+team_stats = df.groupby('team').agg({'runs': 'sum', 'wickets': 'sum'})
+
+
+Feature Engineering:
+
+Created new columns or features to enhance the analysis, such as calculating run rates, strike rates, or other key cricket statistics.
+Derived time-based features to analyze trends over matches or seasons.
+Example:
+
+python
+Copy code
+df['strike_rate'] = (df['runs'] / df['balls_faced']) * 100  # Creating a new feature 'strike_rate'
+
+
+Data Merging:
+
+Merged different datasets (e.g., match data, player statistics, team information) to create a unified dataset for Power BI.
+This process involved joining datasets using common keys such as team names or player IDs.
+Example:
+
+python
+Copy code
+merged_data = pd.merge(df1, df2, on='player_id')  # Merging datasets on a common column 'player_id'
+
+
+Exporting Data:
+
+After processing the data, Pandas was used to export the cleaned and transformed data into CSV or Excel files, which were then imported into Power BI for visualization.
+Example:
+
+python
+Copy code
+df.to_csv('cleaned_data.csv', index=False)  # Exporting the cleaned dataset to a CSV file
+
+
+Visualizing the Data in Power BI
+Once the data was prepared using Pandas, it was imported into Power BI, where the following steps were carried out:
+
+Data Modeling: Relationships between different tables (such as match details, player statistics, and team performances) were established.
+Data Visualization: Visuals like bar charts, line graphs, and tables were created to depict trends, comparisons, and insights into team and player performance.
+Conclusion
+The use of Pandas streamlined the data preparation process, ensuring that clean, accurate, and insightful data was available for visualization in Power BI. This helped create an interactive dashboard that provides detailed insights into T20 cricket statistics. 
+
+
+Bright Data Overview
+Bright Data is a powerful web scraping service that provides tools and infrastructure for collecting public web data at scale. It allows users to extract large volumes of structured and unstructured data from websites for various use cases like market research, competitive analysis, and business intelligence.
+
+Some key features of Bright Data include:
+
+Proxies: Bright Data provides millions of proxies (residential, data center, and mobile IPs) to help users scrape data anonymously and avoid blocking.
+Data Collection Automation: It simplifies the data collection process by offering pre-built scraping templates and automating various scraping tasks.
+Custom Scraping: Users can create custom scrapers using either Bright Data’s code templates or their own web scraping code.
+Types of Codes: Interaction Code and Parser Code
+In this project, you’ve mentioned using two types of codes: interaction code and parser code. Here's an explanation of both:
+
+1. Interaction Code
+The interaction code is responsible for simulating human interactions with a website. This type of code is used to navigate through websites, interact with dynamic content, handle JavaScript-based pages, and make sure the scraper reaches the right sections of the website.
+
+Typical tasks for interaction code:
+
+Filling out forms: Like entering a search query in a search bar.
+Clicking buttons: Such as navigating through pagination or clicking on tabs to reveal hidden content.
+Scrolling: Some websites load content dynamically as the page scrolls, so the interaction code ensures that the scraper gets all the relevant data.
+Handling Captchas: Interaction code may include mechanisms to bypass or solve CAPTCHAs.
+
+2. Parser Code
+The parser code is responsible for extracting and organizing the relevant data from the web pages after the interaction code has navigated to the correct location. This typically involves parsing the HTML content and extracting the specific information you need.
+
+Tasks for parser code:
+
+Extracting text or numbers: Like scraping product prices, descriptions, or ratings.
+Scraping tables or lists: Extracting structured data, like lists of players, match details, etc.
+Handling different HTML tags: Ensuring that data embedded in different parts of the HTML is correctly identified and extracted.
+Organizing the data: The parser code often formats the scraped data into a structured format (like CSV, JSON) that can be used in analysis or for importing into databases.
+
+Combining Interaction and Parser Codes
+In this project, the interaction code is used to navigate to the relevant web pages on the Bright Data platform, possibly handling dynamic content, form submissions, and other interactions. Once the correct data is visible, the parser code is executed to extract the necessary information.
+
+For example, in the context of scraping T20 cricket data:
+
+Interaction code may involve navigating through a sports website, filtering for specific tournaments, and clicking through different match details.
+Parser code would then extract player statistics, scores, and other relevant data and store it in a structured format.
+Conclusion
+In summary, Bright Data enables scalable web scraping by combining interaction code, which handles the navigation and interaction with the website, with parser code, which extracts the relevant data. This approach allows efficient and automated collection of large datasets, which can then be used for further analysis, such as in your Power BI project for visualizing T20 cricket data.
+
+
+
+
+
+
+
